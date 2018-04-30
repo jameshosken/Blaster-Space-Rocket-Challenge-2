@@ -23,6 +23,10 @@ public class PlayerMovementController : MonoBehaviour {
 
     [SerializeField] float positionYawFactor = 10f;
     [SerializeField] float controlYawFactor = 10f;
+
+    [Header("Death Sequence")]
+    Vector3 lostControlRotationVector = new Vector3(0, 0, 1);
+    
     //[SerializeField] float positionPitchFactor = 1f;
 
     bool isControlEnabled = true;
@@ -43,6 +47,10 @@ public class PlayerMovementController : MonoBehaviour {
         {
             ProcessPosition(clamped[0], clamped[1]);
             ProcessRotation(clamped, throwXY);
+        }
+        else
+        {
+            ApplyLostControlRotation();
         }
 	}
 
@@ -122,6 +130,11 @@ public class PlayerMovementController : MonoBehaviour {
 
     }
 
+    void ApplyLostControlRotation()
+    {
+        transform.Rotate(lostControlRotationVector*Time.deltaTime);
+    }
+
     /// <summary>
     /// MESSAGES
     /// </summary>
@@ -132,6 +145,12 @@ public class PlayerMovementController : MonoBehaviour {
 
         //Player no longer follows target. Set parent
         gameObject.transform.parent = target;
+
+
+        // todo Make lostCOntrolRotation not magic numbers
+        lostControlRotationVector.x = Random.Range(-200, 200);
+        lostControlRotationVector.y = Random.Range(-400, 400);
+        lostControlRotationVector.z = Random.Range(-600, 600);
     }
 
 }
