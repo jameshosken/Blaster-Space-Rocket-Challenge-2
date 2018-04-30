@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    
-	// Use this for initialization
-	void Start () {
+
+    [SerializeField] GameObject deathFX;
+    [SerializeField] Transform parent;
+    [SerializeField] int scoreValue = 7;
+
+    ScoreBoard scoreBoard;
+
+    // Use this for initialization
+    void Start () {
 
         AddNonTriggerBoxCollider();
-        
+
+        scoreBoard = FindObjectOfType<ScoreBoard>();
 	}
 	
 	void AddNonTriggerBoxCollider()
@@ -20,6 +27,9 @@ public class EnemyScript : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
+        scoreBoard.ScoreHit(scoreValue);
+        GameObject fx = Instantiate(deathFX, transform.position, Random.rotation);
+        fx.transform.parent = parent;
         Destroy(gameObject);
     }
 }

@@ -24,6 +24,8 @@ public class PlayerMovementController : MonoBehaviour {
     [SerializeField] float positionYawFactor = 10f;
     [SerializeField] float controlYawFactor = 10f;
 
+    [SerializeField] float controlRollFactor = -20f;
+
     [Header("Death Sequence")]
     Vector3 lostControlRotationVector = new Vector3(0, 0, 1);
     
@@ -124,7 +126,13 @@ public class PlayerMovementController : MonoBehaviour {
         float yawDueToControlThrow = throwXY[0] * controlYawFactor;
         float yaw = yawDueToPosition + yawDueToControlThrow;
 
-        Vector3 turnAngles = new Vector3(pitch, yaw, 0);
+        float rollDueToControlThrow = throwXY[0] * controlRollFactor;
+        float roll = rollDueToControlThrow;
+
+
+
+
+        Vector3 turnAngles = new Vector3(pitch, yaw, roll);
 
         transform.Rotate(turnAngles, Space.Self);
 
