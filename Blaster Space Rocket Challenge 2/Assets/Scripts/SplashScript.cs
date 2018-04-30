@@ -20,7 +20,6 @@ public class SplashScript : MonoBehaviour {
 
     void ExitSplash()
     {
-        //Testing Stashing in Github
         levelHandler.LoadNextLevel();
     }
 }
