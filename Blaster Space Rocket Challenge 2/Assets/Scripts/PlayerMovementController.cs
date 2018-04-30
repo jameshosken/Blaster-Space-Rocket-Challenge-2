@@ -9,6 +9,9 @@ public class PlayerMovementController : MonoBehaviour {
     [Header("General")]
     [Tooltip("In ms^-1")][SerializeField]float speed = 1f;
 
+    [Header("Weapons")][SerializeField] float firingRate = 10f;
+    [SerializeField] GameObject[] cannons;
+
     FollowTargetPosition followTarget;
     AlignToTrajectory alignTrajectory;                  //Rename to rotationScript
 
@@ -49,6 +52,7 @@ public class PlayerMovementController : MonoBehaviour {
         {
             ProcessPosition(clamped[0], clamped[1]);
             ProcessRotation(clamped, throwXY);
+            ProcessFiring();
         }
         else
         {
@@ -56,6 +60,10 @@ public class PlayerMovementController : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// TRANSLATION
+    /// </summary>
+    
     float[] GetInputThrow()
     {
         float xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -103,9 +111,48 @@ public class PlayerMovementController : MonoBehaviour {
     }
 
     /// <summary>
+    /// FIRING
+    /// </summary>
+
+    void ProcessFiring()
+    {
+        if(CrossPlatformInputManager.GetButtonDown("Fire"))
+        {
+            ActivateCannons();
+        }
+        else if (CrossPlatformInputManager.GetButtonUp("Fire"))
+        {
+            DeactivateCannons();
+        }
+
+    }
+
+    void ActivateCannons()
+    {
+        foreach (GameObject cannon in cannons)
+        {
+            var emission = cannon.GetComponent<ParticleSystem>().emission;
+            emission.rateOverTime = firingRate;
+            //cannon.SetActive(true);
+        }
+    }
+
+    void DeactivateCannons()
+    {
+        foreach (GameObject cannon in cannons)
+        {
+            var emission = cannon.GetComponent<ParticleSystem>().emission;
+            emission.rateOverTime = 0f;
+            //cannon.SetActive(false);
+        }
+    }
+
+
+
+    /// <summary>
     /// ROTATION
     /// </summary>
-    
+
     void ProcessRotation(float[] clamped, float[] throwXY)
     {
         Vector3 orientation = alignTrajectory.GetOrientationFromTrajectory();

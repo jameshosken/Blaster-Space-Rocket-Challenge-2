@@ -9,6 +9,8 @@ public class EnemyScript : MonoBehaviour {
     [SerializeField] Transform parent;
     [SerializeField] int scoreValue = 7;
 
+    [SerializeField] int health = 100;
+
     ScoreBoard scoreBoard;
 
     // Use this for initialization
@@ -26,6 +28,21 @@ public class EnemyScript : MonoBehaviour {
     }
 
     private void OnParticleCollision(GameObject other)
+    {
+        ProcessHit(other);
+        if(health <= 0)
+        {
+            OnDeath();
+        }
+    }
+    void ProcessHit(GameObject otherWeapon)
+    {
+        int damage = otherWeapon.GetComponent<WeaponScript>().GetDamage();
+        health -= damage;
+
+    }
+
+    void OnDeath()
     {
         scoreBoard.ScoreHit(scoreValue);
         GameObject fx = Instantiate(deathFX, transform.position, Random.rotation);

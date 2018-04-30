@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114384104180548514}
   - component: {fileID: 114752439033235808}
   - component: {fileID: 114697211930146404}
+  - component: {fileID: 114814063445217432}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -364,8 +365,9 @@ GameObject:
   - component: {fileID: 4903643579823790}
   - component: {fileID: 198584395541053300}
   - component: {fileID: 199314634835023232}
+  - component: {fileID: 114420061662987872}
   m_Layer: 0
-  m_Name: Bullets LEFT
+  m_Name: CannonLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,8 +418,9 @@ GameObject:
   - component: {fileID: 4840957849239036}
   - component: {fileID: 198220592613811900}
   - component: {fileID: 199759705309815604}
+  - component: {fileID: 114927080659225332}
   m_Layer: 0
-  m_Name: Bullets RIGHT
+  m_Name: CannonRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1607,7 +1610,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a6e90d68ef6dc2649994cb4899de5d7a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -1665,7 +1668,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1793,6 +1796,18 @@ MonoBehaviour:
   deathFX: {fileID: 1176636280088606}
   fireFX: {fileID: 1880613983479496}
   levelLoadDelay: 2
+--- !u!114 &114420061662987872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857664300045978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca857e00584b9242b738a3d2ad9ac03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!114 &114697211930146404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1816,6 +1831,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  firingRate: 10
+  cannons:
+  - {fileID: 1857664300045978}
+  - {fileID: 1949542686935884}
   target: {fileID: 0}
   xClamp: 1.6
   yClamp: 0.8
@@ -1823,6 +1842,20 @@ MonoBehaviour:
   controlPitchFactor: -10
   positionYawFactor: 10
   controlYawFactor: 10
+  controlRollFactor: -40
+--- !u!114 &114814063445217432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036818126081738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78ef54749e8ec04592d746ee0515831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreIncrement: 1
+  interval: 5
 --- !u!114 &114872085834788672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1836,6 +1869,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trajectoryLag: 0.1
   turnLag: 0.5
+--- !u!114 &114927080659225332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949542686935884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca857e00584b9242b738a3d2ad9ac03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!198 &198220592613811900
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1855,7 +1900,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.05
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -1896,7 +1941,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -403046285
+  randomSeed: 38656758
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2456,7 +2501,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5213,7 +5258,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 514581920
+  randomSeed: 325077581
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5773,7 +5818,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2

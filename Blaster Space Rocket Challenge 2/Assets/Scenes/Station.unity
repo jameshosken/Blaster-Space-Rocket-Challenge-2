@@ -136,6 +136,7 @@ MonoBehaviour:
   deathFX: {fileID: 1754284234087468, guid: b1b82405ca92673418e4f327d1ca0fd9, type: 2}
   parent: {fileID: 1723082548}
   scoreValue: 7
+  health: 100
 --- !u!1 &10922723
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +413,7 @@ MonoBehaviour:
   deathFX: {fileID: 1754284234087468, guid: b1b82405ca92673418e4f327d1ca0fd9, type: 2}
   parent: {fileID: 1723082548}
   scoreValue: 7
+  health: 100
 --- !u!1 &88957927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1146,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: Cannons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: cannons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4890008664302586, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1189,7 +1201,7 @@ Prefab:
     - target: {fileID: 198220592613811900, guid: efcb234ce24b1e04a90bb7c1d57a27db,
         type: 2}
       propertyPath: randomSeed
-      value: -769775051
+      value: -919128417
       objectReference: {fileID: 0}
     - target: {fileID: 82554494634427178, guid: efcb234ce24b1e04a90bb7c1d57a27db,
         type: 2}
@@ -1214,6 +1226,61 @@ Prefab:
         type: 2}
       propertyPath: controlRollFactor
       value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857664300045978, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
+      propertyPath: m_Name
+      value: CannonLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949542686935884, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
+      propertyPath: m_Name
+      value: CannonRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: Cannons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1962689790}
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: Cannons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1766983125}
+    - target: {fileID: 1036818126081738, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: cannons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1962689790}
+    - target: {fileID: 114752439033235808, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: cannons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1766983125}
+    - target: {fileID: 1949542686935884, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857664300045978, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198220592613811900, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198584395541053300, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: randomSeed
+      value: 259110671
+      objectReference: {fileID: 0}
+    - target: {fileID: 198584395541053300, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efcb234ce24b1e04a90bb7c1d57a27db, type: 2}
@@ -6669,6 +6736,7 @@ MonoBehaviour:
   deathFX: {fileID: 1754284234087468, guid: b1b82405ca92673418e4f327d1ca0fd9, type: 2}
   parent: {fileID: 1723082548}
   scoreValue: 7
+  health: 100
 --- !u!1 &1192362900
 GameObject:
   m_ObjectHideFlags: 0
@@ -8873,6 +8941,7 @@ MonoBehaviour:
   deathFX: {fileID: 1754284234087468, guid: b1b82405ca92673418e4f327d1ca0fd9, type: 2}
   parent: {fileID: 1723082548}
   scoreValue: 7
+  health: 100
 --- !u!1 &1643413728
 GameObject:
   m_ObjectHideFlags: 0
@@ -8995,11 +9064,6 @@ Prefab:
     - target: {fileID: 4968299284377948, guid: 38a0ace2a8935c548a71638dbbec0142, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 82365069173522898, guid: 38a0ace2a8935c548a71638dbbec0142,
-        type: 2}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38a0ace2a8935c548a71638dbbec0142, type: 2}
@@ -9672,6 +9736,23 @@ Transform:
   m_Father: {fileID: 189253261}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 15.7890005, y: 350.771, z: -198.937}
+--- !u!1 &1766983125 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1949542686935884, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+    type: 2}
+  m_PrefabInternal: {fileID: 183069958}
+--- !u!114 &1766983126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766983125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca857e00584b9242b738a3d2ad9ac03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &1805965833
 GameObject:
   m_ObjectHideFlags: 0
@@ -10540,6 +10621,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957678790}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1962689790 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1857664300045978, guid: efcb234ce24b1e04a90bb7c1d57a27db,
+    type: 2}
+  m_PrefabInternal: {fileID: 183069958}
+--- !u!114 &1962689794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962689790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca857e00584b9242b738a3d2ad9ac03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &2028009320
 GameObject:
   m_ObjectHideFlags: 0
