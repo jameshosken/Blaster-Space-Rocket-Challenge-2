@@ -20,6 +20,6 @@ public class SplashScript : MonoBehaviour {
 
     void ExitSplash()
     {
-        levelHandler.LoadNectLevel();
+        levelHandler.LoadNextLevel();
     }
 }

@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovementController : MonoBehaviour {
 
+
+    [Header("General")]
     [Tooltip("In ms^-1")][SerializeField]float speed = 1f;
 
     FollowTargetPosition followTarget;
     AlignToTrajectory alignTrajectory;                  //Rename to rotationScript
 
     [SerializeField] Transform target;
+    [Header("Screen Position")]
+    [SerializeField] float xClamp = 1.6f;
+    [SerializeField] float yClamp = 0.8f;
 
-    [SerializeField] float xClamp = 5f;
-    [SerializeField] float yClamp = 5f;
+    [Header("Roll/Pitch/Yaw")]
+    [SerializeField] float positionPitchFactor = -10f;
+    [SerializeField] float controlPitchFactor = -10f;
 
-    [SerializeField] float positionPitchFactor = 20f;
-    [SerializeField] float controlPitchFactor = -20f;
-
-    [SerializeField] float positionYawFactor = 20f;
-    [SerializeField] float controlYawFactor = -20f;
+    [SerializeField] float positionYawFactor = 10f;
+    [SerializeField] float controlYawFactor = 10f;
     //[SerializeField] float positionPitchFactor = 1f;
 
-
+    bool isControlEnabled = true;
 
     private void Start()
     {
@@ -36,10 +39,11 @@ public class PlayerMovement : MonoBehaviour {
         float[] offset  = GetOffsetXY(throwXY[0], throwXY[1]);
         float[] clamped = GetClampedXY(offset[0], offset[1]);
 
-        ProcessPosition(clamped[0], clamped[1]);
-        
-        ProcessRotation(clamped, throwXY);
-
+        if (isControlEnabled)
+        {
+            ProcessPosition(clamped[0], clamped[1]);
+            ProcessRotation(clamped, throwXY);
+        }
 	}
 
     float[] GetInputThrow()
@@ -118,6 +122,17 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// MESSAGES
+    /// </summary>
+
+    void OnPlayerDeath()    //Called by String
+    {
+        isControlEnabled = false;
+
+        //Player no longer follows target. Set parent
+        gameObject.transform.parent = target;
+    }
 
 }
 

@@ -17,7 +17,7 @@ public class LevelHandler: MonoBehaviour {
 
 	}
 
-    public void LoadNectLevel()
+    public void LoadNextLevel()
     {
         print("Loading level in scene manager");
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
@@ -27,4 +27,14 @@ public class LevelHandler: MonoBehaviour {
         SceneManager.LoadScene(nextLevel);
 
     }
+
+     void ReloadLevel()
+    {
+        print("Loading level in scene manager");
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(currentLevel);
+
+    }
 }
+
