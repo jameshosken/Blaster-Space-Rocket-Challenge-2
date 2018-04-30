@@ -12,15 +12,16 @@ public class PlayerMovementController : MonoBehaviour {
     [Header("Weapons")][SerializeField] float firingRate = 10f;
     [SerializeField] GameObject[] cannons;
 
-    FollowTargetPosition followTarget;
-    AlignToTrajectory alignTrajectory;                  //Rename to rotationScript
+    //FollowTargetPosition followTarget;
+    //AlignToTrajectory alignTrajectory;                  //Rename to rotationScript
 
-    [SerializeField] Transform target;
+    //[SerializeField] Transform target;
     [Header("Screen Position")]
     [SerializeField] float xClamp = 1.6f;
     [SerializeField] float yClamp = 0.8f;
 
     [Header("Roll/Pitch/Yaw")]
+    [SerializeField] float turnLag = 0.5f;
     [SerializeField] float positionPitchFactor = -10f;
     [SerializeField] float controlPitchFactor = -10f;
 
@@ -38,8 +39,8 @@ public class PlayerMovementController : MonoBehaviour {
 
     private void Start()
     {
-        followTarget = GetComponent<FollowTargetPosition>();
-        alignTrajectory = GetComponent<AlignToTrajectory>();
+        //followTarget = GetComponent<FollowTargetPosition>();
+        //alignTrajectory = GetComponent<AlignToTrajectory>();
     }
 
     void Update () {
@@ -88,12 +89,12 @@ public class PlayerMovementController : MonoBehaviour {
 
     float [] GetClampedXY(float xoff, float yoff)
     {
-        
-        float rawNewXPos = target.localPosition.x + xoff;
+        float rawNewXPos = transform.localPosition.x + xoff;
+        //float rawNewXPos = target.localPosition.x + xoff;
         float clampedXOffset = Mathf.Clamp(rawNewXPos, -xClamp, xClamp);
 
-        
-        float rawNewYPos = target.localPosition.y + yoff;
+        float rawNewYPos = transform.localPosition.y + yoff;
+        //float rawNewYPos = target.localPosition.y + yoff;
         float clampedYOffset = Mathf.Clamp(rawNewYPos, -yClamp, yClamp);
 
         float[] clamped = new float[2];
@@ -104,9 +105,9 @@ public class PlayerMovementController : MonoBehaviour {
 
     void ProcessPosition(float x, float y)
     {
-
-        target.localPosition = new Vector3(x, y, 0);
-        followTarget.ApplyFollowTarget(target);
+        transform.localPosition = new Vector3(x, y, 0);
+        //target.localPosition = new Vector3(x, y, 0);
+        //followTarget.ApplyFollowTarget(target);
 
     }
 
@@ -155,8 +156,8 @@ public class PlayerMovementController : MonoBehaviour {
 
     void ProcessRotation(float[] clamped, float[] throwXY)
     {
-        Vector3 orientation = alignTrajectory.GetOrientationFromTrajectory();
-        transform.LookAt(target);
+        //Vector3 orientation = alignTrajectory.GetOrientationFromTrajectory();
+        //transform.LookAt(target);
 
         ApplyTurnRotationFromLocalMovement(clamped, throwXY);
 
@@ -181,7 +182,7 @@ public class PlayerMovementController : MonoBehaviour {
 
         Vector3 turnAngles = new Vector3(pitch, yaw, roll);
 
-        transform.Rotate(turnAngles, Space.Self);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(turnAngles), turnLag*Time.deltaTime) ;
 
     }
 
@@ -199,7 +200,7 @@ public class PlayerMovementController : MonoBehaviour {
         isControlEnabled = false;
 
         //Player no longer follows target. Set parent
-        gameObject.transform.parent = target;
+        //gameObject.transform.parent = target;
 
 
         // todo Make lostCOntrolRotation not magic numbers

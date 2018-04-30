@@ -10,7 +10,8 @@ public class FollowTargetPosition : MonoBehaviour {
 
     public void ApplyFollowTarget(Transform target)
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, target.position, lag);
+        this.transform.position = Vector3.Lerp(this.transform.position, target.position, lag*Time.deltaTime);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, target.transform.rotation, lag*Time.deltaTime);
     }
 
 }
