@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplashScript : MonoBehaviour {
+using UnityStandardAssets.CrossPlatformInput;
 
-    [SerializeField] float delayTimer = 5f;
+public class SplashScript : MonoBehaviour
+{
+
     LevelHandler levelHandler;
 
-	// Use this for initialization
-	void Start () {
-        levelHandler = GetComponent<LevelHandler>();
-        Invoke("ExitSplash", delayTimer);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void ExitSplash()
+    // Use this for initialization
+    void Start()
     {
-        levelHandler.LoadNextLevel();
+        levelHandler = GetComponent<LevelHandler>();
+        //Invoke("ExitSplash", delayTimer);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (CrossPlatformInputManager.GetButtonDown("Fire"))
+        {
+            levelHandler.LoadNextLevel();
+        }
     }
 }
+
+

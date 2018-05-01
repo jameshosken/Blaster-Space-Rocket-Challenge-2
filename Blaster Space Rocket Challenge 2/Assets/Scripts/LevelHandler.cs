@@ -6,16 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelHandler: MonoBehaviour {
 
     // Use this class to load next level, revert to menu/win/lose screens
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 
     public void LoadNextLevel()
     {
@@ -23,7 +14,7 @@ public class LevelHandler: MonoBehaviour {
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
         int maxLevel = SceneManager.sceneCountInBuildSettings;
         int nextLevel = (currentLevel + 1) % maxLevel;
-
+        print(nextLevel);
         SceneManager.LoadScene(nextLevel);
 
     }

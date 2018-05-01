@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Splashscreen.unity
+    path: Assets/Scenes/Splashscreen.unity
     guid: ef6f8149be9d83941ad08ac3b7d4e3af
   - enabled: 1
-    path: Assets/Station.unity
+    path: Assets/Scenes/Station.unity
     guid: 84c8bd54282641449ac68dea4a829818
   - enabled: 0
-    path: Assets/Terrain.unity
+    path: Assets/Scenes/Terrain.unity
     guid: f047729c170baa845a69845bc5cadcd3
