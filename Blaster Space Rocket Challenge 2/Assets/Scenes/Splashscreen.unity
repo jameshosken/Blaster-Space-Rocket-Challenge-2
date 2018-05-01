@@ -433,7 +433,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Welcome to Station Defender\n\nUse WASD to move around & dodge. \n\nPress
     SPACE to fire awesome\nlaser plasma bolts at your enemies.\n\nThis game is currently
-    in early\ndevelopment so any feedback in welcome!\n\nPress SPACE to continue"
+    in early\ndevelopment so any feedback is welcome!\n\nPress SPACE to continue"
 --- !u!222 &1348544052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -639,7 +639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3077fd1984244ebfca65a71c4e643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTimer: 5
 --- !u!4 &2002593210
 Transform:
   m_ObjectHideFlags: 0
