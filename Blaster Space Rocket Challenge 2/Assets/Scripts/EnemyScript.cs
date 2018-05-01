@@ -10,14 +10,16 @@ public class EnemyScript : MonoBehaviour {
     [SerializeField] int scoreValue = 7;
 
     [SerializeField] int health = 100;
+    [SerializeField] bool addCollider = true;
 
     ScoreBoard scoreBoard;
 
     // Use this for initialization
     void Start () {
-
-        AddNonTriggerBoxCollider();
-
+        if (addCollider)
+        {
+            AddNonTriggerBoxCollider();
+        }
         scoreBoard = FindObjectOfType<ScoreBoard>();
 	}
 	

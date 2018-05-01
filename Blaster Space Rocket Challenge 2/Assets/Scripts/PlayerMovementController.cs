@@ -32,6 +32,8 @@ public class PlayerMovementController : MonoBehaviour {
 
     [Header("Death Sequence")]
     Vector3 lostControlRotationVector = new Vector3(0, 0, 1);
+
+    [Header("Sounds")] AudioSource laser;
     
     //[SerializeField] float positionPitchFactor = 1f;
 
@@ -39,6 +41,7 @@ public class PlayerMovementController : MonoBehaviour {
 
     private void Start()
     {
+        laser = GetComponent<AudioSource>();
         //followTarget = GetComponent<FollowTargetPosition>();
         //alignTrajectory = GetComponent<AlignToTrajectory>();
     }
@@ -117,13 +120,25 @@ public class PlayerMovementController : MonoBehaviour {
 
     void ProcessFiring()
     {
-        if(CrossPlatformInputManager.GetButtonDown("Fire"))
+        if (CrossPlatformInputManager.GetButtonDown("Fire"))
         {
             ActivateCannons();
+
         }
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            if (!laser.isPlaying)
+            {
+                laser.Play();
+            }
+
+        }
+
+        
         else if (CrossPlatformInputManager.GetButtonUp("Fire"))
         {
             DeactivateCannons();
+            laser.Stop();
         }
 
     }
